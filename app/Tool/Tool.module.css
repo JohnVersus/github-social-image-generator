@@ -1,0 +1,71 @@
+/* @import url(./globals.css); */
+
+.container {
+  padding: 0 0;
+}
+
+.main {
+  height: 95vh;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 5vw;
+}
+
+.title,
+.description {
+  text-align: center;
+}
+
+.form {
+  width: clamp(55vw, 55vw, 80vw);
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.input {
+  width: 75%;
+  height: 100%;
+  color: var(--primary);
+  background-color: var(--light);
+  font-size: clamp(1.5vh, 2rem, 1.5vw);
+  font-weight: bolder;
+  border-radius: 0.5rem;
+}
+
+.button {
+  width: fit-content;
+  height: fit-content;
+  color: var(--primary);
+  background-color: var(--light);
+  font-size: clamp(1.5vh, 2rem, 1.5vw);
+  font-weight: bolder;
+  border-radius: 0.5rem;
+}
+
+.button:active {
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.imgBox {
+  width: 55vw;
+  height: auto;
+  border: 0.2rem solid var(--radiance);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
