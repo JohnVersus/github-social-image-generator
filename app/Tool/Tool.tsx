@@ -8,7 +8,7 @@ const About = () => {
   const [imageData, setImageData] = useState("");
   const [status, setStatus] = useState("");
 
-  const basePath = process.env.BASEPATH;
+  const basePath = process.env.NEXT_PUBLIC_BASEPATH;
   const fetchImage = async () => {
     setStatus("Generating");
     try {

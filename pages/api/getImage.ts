@@ -34,6 +34,7 @@ export default async function handler(
     const image_buffer = Buffer.from(image_array_buffer);
 
     // Send the image data as a response
+    res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate");
     res.setHeader("Content-Type", "image/png");
     res.send(image_buffer);
   } catch (e) {

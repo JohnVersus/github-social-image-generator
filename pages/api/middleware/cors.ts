@@ -1,6 +1,6 @@
 import Cors from "cors";
 
-const BASEPATH = process.env.NEXT_PUBLIC_BASEPATH + "/";
+const BASEPATH = process.env.NEXT_PUBLIC_BASEPATH;
 export const allowedOrigins = [
   "https://webapi.johnversus.dev/",
   "https://tools.johnversus.dev/" + BASEPATH,

@@ -55,6 +55,7 @@
   font-size: clamp(1.5vh, 2rem, 1.5vw);
   font-weight: bolder;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .button:active {
@@ -63,6 +64,8 @@
 }
 .button:disabled {
   background-color: var(--radiance);
+  color: var(--light);
+  cursor: not-allowed;
 }
 
 .imgBox {
