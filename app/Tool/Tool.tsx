@@ -13,11 +13,14 @@ const About = () => {
       const params = new URLSearchParams({
         repo_url: repoUrl,
       });
-      const image_res = await fetch(`/api/getImage?` + params, {
-        headers: {
-          "Content-Type": "image/png",
-        },
-      });
+      const image_res = await fetch(
+        `/github-social-image-generator/api/getImage?` + params,
+        {
+          headers: {
+            "Content-Type": "image/png",
+          },
+        }
+      );
       if (!image_res.ok) {
         const data = await image_res.json();
         throw new Error(JSON.stringify(data));

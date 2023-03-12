@@ -26,7 +26,7 @@
 }
 
 .form {
-  width: clamp(55vw, 55vw, 80vw);
+  width: clamp(55vw, 400px, 85vw);
   height: fit-content;
   display: flex;
   flex-direction: row;
@@ -63,7 +63,7 @@
 }
 
 .imgBox {
-  width: 55vw;
+  width: clamp(55vw, 400px, 85vw);
   height: auto;
   border: 0.2rem solid var(--radiance);
   border-radius: 0.5rem;
