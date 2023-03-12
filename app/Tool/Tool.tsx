@@ -50,7 +50,7 @@ const About = () => {
         >
           <input
             className={styles.input}
-            type={"url"}
+            type={"text"}
             placeholder={"Enter a Github repo url"}
             pattern={
               "^(?:https://)?(?:www.)?github.com/([A-Za-z0-9_-]+/[A-Za-z0-9_.-]+)/?$"
