@@ -1,10 +1,11 @@
 import Cors from "cors";
 
+const BASEPATH = process.env.NEXT_PUBLIC_BASEPATH + "/";
 export const allowedOrigins = [
   "https://webapi.johnversus.dev/",
-  "https://tools.johnversus.dev/github-social-image-generator",
-  "http://127.0.0.1:3000/github-social-image-generator",
-  "http://localhost:3000/github-social-image-generator",
+  "https://tools.johnversus.dev/" + BASEPATH,
+  "http://127.0.0.1:3000/" + BASEPATH,
+  "http://localhost:3000/" + BASEPATH,
 ];
 export const cors = Cors({
   methods: ["GET"],

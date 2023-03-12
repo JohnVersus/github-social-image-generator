@@ -1,33 +1,35 @@
 "use client";
 
 import styles from "./Tool.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const About = () => {
   const [repoUrl, setRepoUrl] = useState("");
   const [imageData, setImageData] = useState("");
+  const [status, setStatus] = useState("");
 
+  const basePath = process.env.BASEPATH;
   const fetchImage = async () => {
+    setStatus("Generating");
     try {
       setImageData("");
       const params = new URLSearchParams({
         repo_url: repoUrl,
       });
-      const image_res = await fetch(
-        `/github-social-image-generator/api/getImage?` + params,
-        {
-          headers: {
-            "Content-Type": "image/png",
-          },
-        }
-      );
+      const image_res = await fetch(`${basePath}/api/getImage?` + params, {
+        headers: {
+          "Content-Type": "image/png",
+        },
+      });
       if (!image_res.ok) {
         const data = await image_res.json();
         throw new Error(JSON.stringify(data));
       }
       const imageBlob = await image_res.blob();
       setImageData(URL.createObjectURL(imageBlob));
+      setStatus("");
     } catch (error) {
+      setStatus("");
       if (error instanceof Error) {
         alert(error.message);
       }
@@ -49,7 +51,7 @@ const About = () => {
           <input
             className={styles.input}
             type={"url"}
-            placeholder={"Enter Guthub repo url"}
+            placeholder={"Enter a Github repo url"}
             pattern={
               "^(?:https://)?(?:www.)?github.com/([A-Za-z0-9_-]+/[A-Za-z0-9_.-]+)/?$"
             }
@@ -60,7 +62,9 @@ const About = () => {
             autoComplete={"on"}
           />
 
-          <button className={styles.button}>Click To Generate</button>
+          <button className={styles.button} disabled={status ? true : false}>
+            Click To Generate
+          </button>
         </form>
         {imageData && (
           <div className={styles.imgBox}>

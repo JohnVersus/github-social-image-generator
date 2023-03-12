@@ -50,16 +50,19 @@
 .button {
   width: fit-content;
   height: fit-content;
-  color: var(--primary);
-  background-color: var(--light);
+  background-color: var(--primary);
+  color: var(--light);
   font-size: clamp(1.5vh, 2rem, 1.5vw);
   font-weight: bolder;
   border-radius: 0.5rem;
 }
 
 .button:active {
-  background-color: var(--primary);
-  color: var(--light);
+  color: var(--primary);
+  background-color: var(--light);
+}
+.button:disabled {
+  background-color: var(--radiance);
 }
 
 .imgBox {
