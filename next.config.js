@@ -8,6 +8,7 @@ const nextConfig = {
   images: {
     domains: ["webapi.johnversus.dev", "localhost"],
   },
+  basePath: "/github-social-image-generator",
 };
 
 module.exports = nextConfig;
