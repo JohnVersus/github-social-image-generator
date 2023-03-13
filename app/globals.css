@@ -28,10 +28,10 @@ body {
 }
 
 ::selection {
-  background: var(--primary); /* WebKit/Blink Browsers */
+  background: var(--dark); /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background: var(--primary); /* Gecko Browsers */
+  background: var(--dark); /* Gecko Browsers */
 }
 
 a {

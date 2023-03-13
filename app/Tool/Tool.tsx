@@ -59,7 +59,6 @@ const About = () => {
             onChange={(e) => {
               setRepoUrl(e.target.value);
             }}
-            autoComplete={"on"}
           />
 
           <button className={styles.button} disabled={status ? true : false}>
@@ -67,14 +66,21 @@ const About = () => {
           </button>
         </form>
         {imageData && (
-          <div className={styles.imgBox}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={`${imageData}`}
-              width={"100%"}
-              alt={"Repo Social Image"}
-            />
-          </div>
+          <>
+            <div className={styles.imgBox}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`${imageData}`}
+                width={"100%"}
+                alt={"Repo Social Image"}
+              />
+            </div>
+            <div className={styles.save}>
+              <a download={"image.png"} href={imageData}>
+                💾
+              </a>
+            </div>
+          </>
         )}
       </main>
     </div>

@@ -6,18 +6,23 @@
 
 .main {
   height: 95vh;
-  padding: 4rem 0;
+  padding: 2rem;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: top;
   align-items: center;
+  overflow: scroll;
 }
 
 .title {
   margin: 0;
-  line-height: 1.15;
-  font-size: 5vw;
+  line-height: 1;
+  font-size: clamp(5vw, 45px, 8vw);
+  background: -webkit-linear-gradient(right, var(--primary), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .title,
@@ -74,4 +79,18 @@
   border: 0.2rem solid var(--radiance);
   border-radius: 0.5rem;
   padding: 0.5rem;
+}
+
+.save {
+  font-size: larger;
+  float: right;
+
+  border: 0.1rem solid var(--primary);
+  padding: 0.2rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+}
+.save:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
