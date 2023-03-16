@@ -17,8 +17,7 @@ export default async function handler(
     await runMiddleware(req, res, refererCheck);
 
     const { repo_url } = req.query;
-    console.log(req.headers.referer);
-    console.log(repo_url);
+    console.log({ repo_url });
     const { API_PATH } = process.env;
     const requestUrl = API_PATH + `generateGithubSocial?repo_url=${repo_url}`;
 

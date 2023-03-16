@@ -1,20 +1,61 @@
 "use client";
 
 import styles from "./Tool.module.css";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 
 const About = () => {
   const [repoUrl, setRepoUrl] = useState("");
+  const [queryUrl, setQueryUrl] = useState("");
   const [imageData, setImageData] = useState("");
   const [status, setStatus] = useState("");
 
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    console.log(pathname);
+  }, [pathname]);
+
+  const searchParams = useSearchParams();
+  const fallBackUrl =
+    "https://github.com/JohnVersus/github-social-image-generator";
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      if (searchParams) {
+        const params = new URLSearchParams(searchParams);
+        params.set(name, value);
+
+        return params.toString();
+      }
+    },
+    [searchParams]
+  );
+
+  useEffect(() => {
+    const query_url = searchParams?.get("repo_url");
+    console.log(query_url);
+    if (query_url) {
+      setQueryUrl(query_url);
+    } else {
+      setQueryUrl(fallBackUrl);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (queryUrl) {
+      fetchImage(queryUrl);
+    }
+  }, [queryUrl]);
+
   const basePath = process.env.NEXT_PUBLIC_BASEPATH;
-  const fetchImage = async () => {
+  const fetchImage = async (url: string) => {
     setStatus("Generating");
     try {
       setImageData("");
       const params = new URLSearchParams({
-        repo_url: repoUrl,
+        repo_url: url,
       });
       const image_res = await fetch(`${basePath}/api/getImage?` + params, {
         headers: {
@@ -45,7 +86,12 @@ const About = () => {
           className={styles.form}
           onSubmit={(e) => {
             e.preventDefault();
-            fetchImage();
+            router.push(`/?repo_url=${repoUrl}`);
+            // router.push("/?" + createQueryString("repo_url", repoUrl), {
+            //   forceOptimisticNavigation: true,
+            // });
+            fetchImage(repoUrl);
+            // router.refresh();
           }}
         >
           <input
@@ -59,6 +105,7 @@ const About = () => {
             onChange={(e) => {
               setRepoUrl(e.target.value);
             }}
+            // value={repoUrl ? repoUrl : fallBackUrl}
           />
 
           <button className={styles.button} disabled={status ? true : false}>
