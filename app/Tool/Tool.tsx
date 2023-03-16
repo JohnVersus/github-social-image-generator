@@ -13,9 +13,9 @@ const About = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  useEffect(() => {
-    console.log(pathname);
-  }, [pathname]);
+  // useEffect(() => {
+  //   console.log(pathname);
+  // }, [pathname]);
 
   const searchParams = useSearchParams();
   const fallBackUrl =
@@ -35,7 +35,7 @@ const About = () => {
 
   useEffect(() => {
     const query_url = searchParams?.get("repo_url");
-    console.log(query_url);
+    // console.log(query_url);
     if (query_url) {
       setQueryUrl(query_url);
     } else {
