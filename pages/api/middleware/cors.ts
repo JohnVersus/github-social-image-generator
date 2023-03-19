@@ -14,6 +14,8 @@ export const cors = Cors({
     // (like mobile apps or curl requests)
     console.log({ origin });
     if (!origin) return callback(null, true);
+    // Adding access to all origins for SEO purpose
+    if (origin) return callback(null, true);
     const origin_root = new URL(origin).origin;
     console.log({ origin_root });
 

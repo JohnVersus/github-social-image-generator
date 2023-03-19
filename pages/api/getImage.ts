@@ -13,8 +13,8 @@ export default async function handler(
     console.log("-----");
     // Run the middleware
     await runMiddleware(req, res, cors);
-    await runMiddleware(req, res, requestCheck);
-    await runMiddleware(req, res, refererCheck);
+    // await runMiddleware(req, res, requestCheck);
+    // await runMiddleware(req, res, refererCheck);
 
     const { repo_url } = req.query;
     console.log({ repo_url });
