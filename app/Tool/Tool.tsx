@@ -72,7 +72,9 @@ const About = () => {
     } catch (error) {
       setStatus("");
       if (error instanceof Error) {
-        alert(error.message);
+        if (!error.message.includes("<")) {
+          alert(error.message);
+        }
       }
     }
   };
