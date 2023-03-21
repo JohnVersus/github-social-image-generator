@@ -1,33 +1,47 @@
-const assetBasepath = process.env.NEXT_PUBLIC_BASEPATH + "/";
-const title = "Github Social Image Generator";
-const description =
-  "Generate beautiful social media images for your Github repositories with the Github Social Image Generator.";
-const url = "https://tools.johnversus.dev/github-social-image-generator";
-const image =
-  "https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=https://github.com/JohnVersus/github-social-image-generator";
 export default function Head() {
   return (
     <head>
       {/* Primary Meta Tags */}
-      <title>{title}</title>
-      <meta name="title" content={title} />
-      <meta name="description" content={description} />
+      <title>Github Social Image Generator</title>
+      <meta name="title" content="Github Social Image Generator" />
+      <meta
+        name="description"
+        content="Generate beautiful social media images for your Github repositories with the Github Social Image Generator."
+      />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
-      <meta property="og:image:alt" content={title} />
+      <meta
+        property="og:url"
+        content="https://tools.johnversus.dev/github-social-image-generator"
+      />
+      <meta property="og:title" content="Github Social Image Generator" />
+      <meta
+        property="og:description"
+        content="Generate beautiful social media images for your Github repositories with the Github Social Image Generator."
+      />
+      <meta
+        property="og:image"
+        content="https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=https://github.com/JohnVersus/github-social-image-generator"
+      />
+      <meta property="og:image:alt" content="Github Social Image Generator" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={url} />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={image}></meta>
-      <meta name="twitter:image:alt" content={title} />
+      <meta
+        property="twitter:url"
+        content="https://tools.johnversus.dev/github-social-image-generator"
+      />
+      <meta property="twitter:title" content="Github Social Image Generator" />
+      <meta
+        property="twitter:description"
+        content="Generate beautiful social media images for your Github repositories with the Github Social Image Generator."
+      />
+      <meta
+        property="twitter:image"
+        content="https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=https://github.com/JohnVersus/github-social-image-generator"
+      ></meta>
+      <meta name="twitter:image:alt" content="Github Social Image Generator" />
 
       {/* primary color */}
       <link
