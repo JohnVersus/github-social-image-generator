@@ -28,10 +28,10 @@ body {
 }
 
 ::selection {
-  background: var(--dark); /* WebKit/Blink Browsers */
+  background: var(--radiance); /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background: var(--dark); /* Gecko Browsers */
+  background: var(--radiance); /* Gecko Browsers */
 }
 
 a {
@@ -64,7 +64,7 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
-@supports (scrollbar-color: red blue) {
+@supports (scrollbar-color: red rgb(6, 6, 7)) {
   * {
     scrollbar-color: var(--primary) var(--radiance);
   }

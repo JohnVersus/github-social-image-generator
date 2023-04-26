@@ -88,11 +88,11 @@ const About = () => {
           className={styles.form}
           onSubmit={(e) => {
             e.preventDefault();
-            router.push(`/?repo_url=${repoUrl}`);
             // router.push("/?" + createQueryString("repo_url", repoUrl), {
             //   forceOptimisticNavigation: true,
             // });
-            // fetchImage(repoUrl);
+            fetchImage(repoUrl);
+            router.push(`/?repo_url=${repoUrl}`);
             // router.refresh();
           }}
         >
