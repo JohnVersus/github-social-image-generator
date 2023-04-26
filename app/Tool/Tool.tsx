@@ -49,7 +49,7 @@ const About = () => {
     }
   }, [queryUrl]);
 
-  const basePath = process.env.NEXT_PUBLIC_BASEPATH;
+  // const basePath = process.env.NEXT_PUBLIC_BASEPATH;
   const fetchImage = async (url: string) => {
     setStatus("Generating");
     try {
@@ -57,7 +57,7 @@ const About = () => {
       const params = new URLSearchParams({
         repo_url: url,
       });
-      const image_res = await fetch(`${basePath}/api/getImage?` + params, {
+      const image_res = await fetch(`/api/getImage?` + params, {
         headers: {
           "Content-Type": "image/png",
         },
@@ -92,7 +92,7 @@ const About = () => {
             // router.push("/?" + createQueryString("repo_url", repoUrl), {
             //   forceOptimisticNavigation: true,
             // });
-            fetchImage(repoUrl);
+            // fetchImage(repoUrl);
             // router.refresh();
           }}
         >

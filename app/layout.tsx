@@ -15,7 +15,7 @@ const image =
 //   description:
 //     "Generate beautiful social media images for your Github repositories with the Github Social Image Generator.",
 //   themeColor: "#ffffff",
-//   manifest: "github-social-image-generator/favicon/site.webmanifest",
+//   manifest: "/favicon/site.webmanifest",
 //   openGraph: {
 //     type: "website",
 //     siteName: "Github Social Image Generator",
@@ -46,23 +46,23 @@ const image =
 //   icons: {
 //     icon: [
 //       {
-//         url: "github-social-image-generator/favicon/favicon-32x32.png",
+//         url: "/favicon/favicon-32x32.png",
 //         type: "image/png",
 //         sizes: "32x32",
 //       },
 //       {
-//         url: "github-social-image-generator/favicon/favicon-16x16.png",
+//         url: "/favicon/favicon-16x16.png",
 //         type: "image/png",
 //         sizes: "16x16",
 //       },
 //     ],
 
-//     shortcut: ["github-social-image-generator//favicon/favicon.ico"],
+//     shortcut: ["//favicon/favicon.ico"],
 
 //     apple: [
-//       { url: "github-social-image-generator/favicon/apple-touch-icon.png" },
+//       { url: "/favicon/apple-touch-icon.png" },
 //       {
-//         url: "github-social-image-generator/favicon/apple-touch-icon.png",
+//         url: "/favicon/apple-touch-icon.png",
 //         sizes: "180x180",
 //         type: "image/png",
 //       },
@@ -83,63 +83,57 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Primary Meta Tags */}
-        {/* <title>{title}</title>
+        <title>{title}</title>
         <meta name="title" content={title} />
-        <meta name="description" content={description} /> */}
+        <meta name="description" content={description} />
 
         {/* Open Graph / Facebook */}
-        {/* <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content={url} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-        <meta property="og:image:alt" content={title} /> */}
+        <meta property="og:image:alt" content={title} />
 
         {/* Twitter */}
-        {/* <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={url} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={image}></meta>
-        <meta name="twitter:image:alt" content={title} /> */}
+        <meta name="twitter:image:alt" content={title} />
 
         {/* primary color */}
-        {/* <link
+        <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href={"github-social-image-generator/favicon/apple-touch-icon.png"}
+          href={"/favicon/apple-touch-icon.png"}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="32x32"
-          href={"github-social-image-generator/favicon/favicon-32x32.png"}
+          href={"/favicon/favicon-32x32.png"}
         />
         <link
           rel="icon"
           type="image/png"
           sizes="16x16"
-          href={"github-social-image-generator/favicon/favicon-16x16.png"}
+          href={"/favicon/favicon-16x16.png"}
         />
-        <link
-          rel="manifest"
-          href={"github-social-image-generator/favicon/site.webmanifest"}
-        />
+        <link rel="manifest" href={"/favicon/site.webmanifest"} />
         <link
           rel="mask-icon"
-          href={"github-social-image-generator/favicon/safari-pinned-tab.svg"}
+          href={"/favicon/safari-pinned-tab.svg"}
           color="#5bbad5"
         />
-        <link
-          rel="shortcut icon"
-          href={"github-social-image-generator/favicon/favicon.ico"}
-        />
+        <link rel="shortcut icon" href={"/favicon/favicon.ico"} />
         <meta name="msapplication-TileColor" content="#00916e" />
         <meta
           name="msapplication-config"
-          content={"github-social-image-generator/favicon/browserconfig.xml"}
+          content={"/favicon/browserconfig.xml"}
         />
-        <meta name="theme-color" content="#1c1c1c"></meta> */}
+        <meta name="theme-color" content="#1c1c1c"></meta>
       </head>
       <body>
         {children}
