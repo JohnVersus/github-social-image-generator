@@ -6,7 +6,7 @@ const assetBasepath = process.env.NEXT_PUBLIC_BASEPATH + "/";
 const title = "Github Social Image Generator";
 const description =
   "Generate beautiful social media images for your Github repositories with the Github Social Image Generator.";
-const url = "https://tools.johnversus.dev/github-social-image-generator";
+const url = "https://github-social-image-generator.vercel.app/";
 const image =
   "https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=https://github.com/JohnVersus/github-social-image-generator";
 // Metadata also to be updated in manifest and xml file
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Github Social Image Generator",
-    url: "https://tools.johnversus.dev/github-social-image-generator",
+    url: "https://github-social-image-generator.vercel.app/",
     title: "Github Social Image Generator",
     description:
       "Generate beautiful social media images for your Github repositories with the Github Social Image Generator.",
