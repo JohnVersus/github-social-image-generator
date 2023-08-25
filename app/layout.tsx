@@ -1,7 +1,6 @@
 import "./globals.css";
 import Footer from "./Footer/Footer";
 import type { Metadata } from "next";
-import Analytics from "./Gtag/Analytics";
 
 const assetBasepath = process.env.NEXT_PUBLIC_BASEPATH + "/";
 const title = "Github Social Image Generator";
@@ -85,7 +84,6 @@ export default function RootLayout({
       <body>
         {children}
         <Footer />
-        <Analytics />
       </body>
     </html>
   );
