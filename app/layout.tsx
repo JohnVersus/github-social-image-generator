@@ -1,14 +1,8 @@
 import "./globals.css";
 import Footer from "./Footer/Footer";
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 
-const assetBasepath = process.env.NEXT_PUBLIC_BASEPATH + "/";
-const title = "Github Social Image Generator";
-const description =
-  "Generate beautiful social media images for your Github repositories with the Github Social Image Generator.";
-const url = "https://github-social-image-generator.vercel.app/";
-const image =
-  "https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=https://github.com/JohnVersus/github-social-image-generator";
 // Metadata also to be updated in manifest and xml file
 export const metadata: Metadata = {
   title: "Github Social Image Generator",
@@ -84,6 +78,7 @@ export default function RootLayout({
       <body>
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
