@@ -9,6 +9,7 @@ const About = () => {
   const [queryUrl, setQueryUrl] = useState("");
   const [imageData, setImageData] = useState("");
   const [status, setStatus] = useState("");
+  const [copyStatus, setCopyStatus] = useState(""); // 1. Add a state to manage the copy status
 
   const router = useRouter();
   const pathname = usePathname();
@@ -79,6 +80,24 @@ const About = () => {
     }
   };
 
+  // 2. Create a function to handle the copy action
+  const handleCopy = () => {
+    navigator.clipboard
+      .writeText(
+        "https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=" +
+          queryUrl
+      )
+      .then(
+        function () {
+          setCopyStatus("Copied!");
+          setTimeout(() => setCopyStatus(""), 2000); // Clear the status after 2 seconds
+        },
+        function (err) {
+          console.error("Could not copy text: ", err);
+        }
+      );
+  };
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -124,10 +143,24 @@ const About = () => {
                 alt={"Repo Social Image"}
               />
             </div>
-            <div className={styles.save}>
-              <a download={"image.png"} href={imageData}>
-                💾
-              </a>
+            <div className={styles.buttonContainer}>
+              <div className={styles.save}>
+                <a download={"image.png"} href={imageData}>
+                  💾
+                </a>
+              </div>
+              <div className={styles.copyContainer}>
+                <button
+                  onClick={handleCopy}
+                  className={styles.copyBtn}
+                  title="Copy URL"
+                >
+                  🔗
+                </button>
+                {copyStatus && (
+                  <span className={styles.copyStatus}>{copyStatus}</span>
+                )}
+              </div>
             </div>
           </>
         )}

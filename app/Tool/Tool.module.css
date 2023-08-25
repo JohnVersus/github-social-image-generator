@@ -87,15 +87,63 @@
   padding: 0.5rem;
 }
 
-.save {
+.buttonContainer {
+  display: flex;
+  gap: 1rem; /* Space between the buttons */
+}
+
+.save,
+.copyContainer {
   font-size: larger;
-  float: right;
   border: 0.1rem solid var(--primary);
   padding: 0.2rem;
-  margin-top: 0.5rem;
   border-radius: 0.5rem;
+  position: relative;
 }
-.save:hover {
+
+.save:hover,
+.copyContainer:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+.save a {
+  display: inline-block; /* To allow padding to be applied */
+  padding: 0.25rem; /* Adjust as needed for spacing */
+  text-decoration: none; /* Optional: To remove any underlines */
+  color: inherit; /* To inherit the color from the parent */
+}
+.copyBtn {
+  background-color: transparent;
+  border: none;
+  color: var(--primary);
+  font-size: clamp(1.5vh, 3rem, 1.5vw);
+  font-weight: bolder;
+  font-size: larger;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 0.25rem; /* Add padding to make the button look spacious */
+}
+
+.copyBtn:hover {
+  color: var(
+    --secondary
+  ); /* Assuming you want a different color on hover, adjust as needed */
+}
+
+.copyBtn:active {
+  color: var(--radiance); /* Adjust as needed */
+}
+
+.copyBtn:focus {
+  outline: none; /* Removes the default browser outline on focus */
+}
+.copyStatus {
+  position: absolute;
+  top: -1.5rem; /* Adjust this value to position the copied text above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  z-index: 1; /* To ensure it appears above other elements */
 }
