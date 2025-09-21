@@ -13,6 +13,7 @@ body {
 :root {
   --primary: #00916e;
   --secondary: #03a8a0;
+  --link-color: #61dafb;
   --dark: #1c1c1c;
   --light: #fffcff;
   --gray: #f3eff5;
@@ -37,7 +38,7 @@ body {
 }
 
 a {
-  color: var(--primary);
+  color: var(--link-color);
   text-decoration: none;
 }
 
