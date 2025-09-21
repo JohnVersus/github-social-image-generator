@@ -42,7 +42,7 @@ const About = () => {
     } else {
       setQueryUrl(fallBackUrl);
     }
-  }, []);
+  }, [searchParams]);
 
   useEffect(() => {
     if (queryUrl) {
@@ -110,7 +110,6 @@ const About = () => {
             // router.push("/?" + createQueryString("repo_url", repoUrl), {
             //   forceOptimisticNavigation: true,
             // });
-            fetchImage(repoUrl);
             router.push(`/?repo_url=${repoUrl}`);
             // router.refresh();
           }}
