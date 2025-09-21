@@ -1,42 +1,22 @@
 "use client";
 
 import styles from "./Tool.module.css";
-import { useCallback, useEffect, useState } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 
 const About = () => {
   const [repoUrl, setRepoUrl] = useState("");
   const [queryUrl, setQueryUrl] = useState("");
-  const [imageData, setImageData] = useState("");
-  const [status, setStatus] = useState("");
-  const [copyStatus, setCopyStatus] = useState(""); // 1. Add a state to manage the copy status
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [copyStatus, setCopyStatus] = useState("");
 
   const router = useRouter();
-  const pathname = usePathname();
-
-  // useEffect(() => {
-  //   console.log(pathname);
-  // }, [pathname]);
-
   const searchParams = useSearchParams();
   const fallBackUrl =
     "https://github.com/JohnVersus/github-social-image-generator";
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      if (searchParams) {
-        const params = new URLSearchParams(searchParams);
-        params.set(name, value);
-
-        return params.toString();
-      }
-    },
-    [searchParams]
-  );
-
   useEffect(() => {
     const query_url = searchParams?.get("repo_url");
-    // console.log(query_url);
     if (query_url) {
       setQueryUrl(query_url);
     } else {
@@ -46,39 +26,9 @@ const About = () => {
 
   useEffect(() => {
     if (queryUrl) {
-      fetchImage(queryUrl);
+      setStatus("loading");
     }
   }, [queryUrl]);
-
-  // const basePath = process.env.NEXT_PUBLIC_BASEPATH;
-  const fetchImage = async (url: string) => {
-    setStatus("Generating");
-    try {
-      setImageData("");
-      const params = new URLSearchParams({
-        repo_url: url,
-      });
-      const image_res = await fetch(`/api/getImage?` + params, {
-        headers: {
-          "Content-Type": "image/png",
-        },
-      });
-      if (!image_res.ok) {
-        const data = await image_res.json();
-        throw new Error(JSON.stringify(data));
-      }
-      const imageBlob = await image_res.blob();
-      setImageData(URL.createObjectURL(imageBlob));
-      setStatus("");
-    } catch (error) {
-      setStatus("");
-      if (error instanceof Error) {
-        if (!error.message.includes("<")) {
-          alert(error.message);
-        }
-      }
-    }
-  };
 
   // 2. Create a function to handle the copy action
   const handleCopy = () => {
@@ -128,27 +78,44 @@ const About = () => {
             // value={repoUrl ? repoUrl : fallBackUrl}
           />
 
-          <button className={styles.button} disabled={status ? true : false}>
+          <button
+            className={styles.button}
+            disabled={status === "loading" ? true : false}
+          >
             Click To Generate
           </button>
         </form>
-        {imageData && (
+        {queryUrl && (
           <>
-            <div className={styles.imgBox}>
+            {status === "loading" && <p>Generating...</p>}
+            <div
+              className={styles.imgBox}
+              style={{ display: status === "success" ? "block" : "none" }}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src={`${imageData}`}
+                src={`/api/getImage?repo_url=${queryUrl}`}
                 width={"100%"}
                 alt={"Repo Social Image"}
+                fetchPriority="high"
+                onLoad={() => setStatus("success")}
+                onError={() => {
+                  setStatus("error");
+                  alert("Error generating image.");
+                }}
               />
             </div>
-            <div className={styles.buttonContainer}>
-              <div className={styles.save}>
-                <a download={"image.png"} href={imageData}>
-                  💾
-                </a>
-              </div>
-              <div className={styles.copyContainer}>
+            {status === "success" && (
+              <div className={styles.buttonContainer}>
+                <div className={styles.save}>
+                  <a
+                    download={"image.png"}
+                    href={`/api/getImage?repo_url=${queryUrl}`}
+                  >
+                    💾
+                  </a>
+                </div>
+                <div className={styles.copyContainer}>
                 <button
                   onClick={handleCopy}
                   className={styles.copyBtn}
@@ -185,6 +152,7 @@ const About = () => {
                 </a>
               </div>
             </div>
+            )}
           </>
         )}
       </main>

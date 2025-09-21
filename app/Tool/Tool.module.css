@@ -52,11 +52,15 @@
   border-radius: 0.5rem;
 }
 
+.input::placeholder {
+  color: #6c757d;
+}
+
 .button {
   width: fit-content;
   height: fit-content;
   /* min-height: 3rem; */
-  background-color: var(--primary);
+  background-color: #007a5c;
   color: var(--light);
   font-size: clamp(1.5vh, 3rem, 1.5vw);
   font-weight: bolder;
