@@ -5,36 +5,36 @@ import { Analytics } from "@vercel/analytics/react";
 
 // Metadata also to be updated in manifest and xml file
 export const metadata: Metadata = {
-  title: "Github Social Image Generator",
+  title: "GitHub Social Preview & Repo Image Generator",
   description:
-    "Generate beautiful social media images for your Github repositories with the Github Social Image Generator.",
+    "The GitHub Social Image Generator is a tool that allows you to create social media preview images for your GitHub repositories. Use this social image generator to create beautiful images for your repos.",
   themeColor: "#ffffff",
   manifest: "/favicon/site.webmanifest",
   openGraph: {
     type: "website",
-    siteName: "Github Social Image Generator",
+    siteName: "GitHub Social Preview & Repo Image Generator",
     url: "https://github-social-image-generator.vercel.app/",
-    title: "Github Social Image Generator",
+    title: "GitHub Social Preview & Repo Image Generator",
     description:
-      "Generate beautiful social media images for your Github repositories with the Github Social Image Generator.",
+      "The GitHub Social Image Generator is a tool that allows you to create social media preview images for your GitHub repositories. Use this social image generator to create beautiful images for your repos.",
     images: [
       {
         url: "https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=https://github.com/JohnVersus/github-social-image-generator",
         width: 1920,
         height: 960,
-        alt: "Github Social Image Generator",
+        alt: "GitHub Social Preview Image Generator",
       },
     ],
     locale: "en-US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Github Social Image Generator",
+    title: "GitHub Social Preview & Repo Image Generator",
     description:
-      "Generate beautiful social media images for your Github repositories with the Github Social Image Generator.",
+      "The GitHub Social Image Generator is a tool that allows you to create social media preview images for your GitHub repositories. Use this social image generator to create beautiful images for your repos.",
     images: {
       url: "https://webapi.johnversus.dev/api/generateGithubSocial?repo_url=https://github.com/JohnVersus/github-social-image-generator",
-      alt: "Github Social Image Generator",
+      alt: "GitHub Social Preview Image Generator",
     },
   },
   icons: {
