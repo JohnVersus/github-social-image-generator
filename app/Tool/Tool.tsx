@@ -52,6 +52,16 @@ const About = () => {
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>GitHub Social Image Generator</h1>
+        <h2 className={styles.visuallyHidden}>
+          GitHub Social Preview and Repo Image Generator
+        </h2>
+        <p className={styles.visuallyHidden}>
+          Create stunning social preview images for your GitHub repositories
+          with this free online tool. Our GitHub social image generator helps
+          you make custom repo images in seconds. Simply enter your repository
+          URL to generate a social media preview that will make your project
+          stand out.
+        </p>
 
         <form
           className={styles.form}

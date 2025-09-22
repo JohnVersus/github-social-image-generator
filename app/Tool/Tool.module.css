@@ -110,6 +110,18 @@
   transform: scale(1.1);
   cursor: pointer;
 }
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .save a {
   display: inline-block; /* To allow padding to be applied */
   padding: 0.25rem; /* Adjust as needed for spacing */
