@@ -4,11 +4,18 @@ import styles from "./Tool.module.css";
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
+declare global {
+  interface Window {
+    gtag: any;
+  }
+}
+
 const About = () => {
   const [repoUrl, setRepoUrl] = useState("");
   const [queryUrl, setQueryUrl] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [copyStatus, setCopyStatus] = useState("");
+  const [isTwitterScriptLoaded, setIsTwitterScriptLoaded] = useState(false);
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -30,7 +37,38 @@ const About = () => {
     }
   }, [queryUrl]);
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://platform.twitter.com/widgets.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    const timer = setTimeout(() => {
+      setIsTwitterScriptLoaded(true);
+    }, 5000);
+
+    return () => {
+      document.body.removeChild(script);
+      clearTimeout(timer);
+    };
+  }, []);
+
   // 2. Create a function to handle the copy action
+  const trackEvent = (
+    action: string,
+    category: string,
+    label: string,
+    value: number
+  ) => {
+    if (window.gtag) {
+      window.gtag("event", action, {
+        event_category: category,
+        event_label: label,
+        value: value,
+      });
+    }
+  };
+
   const handleCopy = () => {
     navigator.clipboard
       .writeText(
@@ -51,6 +89,19 @@ const About = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
+        <div
+          className={styles.followButtonContainer}
+          style={{ visibility: isTwitterScriptLoaded ? "visible" : "hidden" }}
+        >
+          <a
+            href="https://twitter.com/johnvs_nagendra"
+            className="twitter-follow-button"
+            data-size="large"
+            onClick={() => trackEvent("click", "social", "follow_on_x", 1)}
+          >
+            Follow @johnvs_nagendra
+          </a>
+        </div>
         <h1 className={styles.title}>GitHub Social Image Generator</h1>
         <h2 className={styles.visuallyHidden}>
           GitHub Social Preview and Repo Image Generator
@@ -67,6 +118,7 @@ const About = () => {
           className={styles.form}
           onSubmit={(e) => {
             e.preventDefault();
+            trackEvent("click", "generate", "click_to_generate", 1);
             // router.push("/?" + createQueryString("repo_url", repoUrl), {
             //   forceOptimisticNavigation: true,
             // });
