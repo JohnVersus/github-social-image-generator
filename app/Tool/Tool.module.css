@@ -111,6 +111,13 @@
   cursor: pointer;
 }
 
+.followButtonContainer {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
 .visuallyHidden {
   position: absolute;
   width: 1px;

@@ -2,6 +2,7 @@ import "./globals.css";
 import Footer from "./Footer/Footer";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import Script from "next/script";
 
 // Metadata also to be updated in manifest and xml file
 export const metadata: Metadata = {
@@ -75,6 +76,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-FG0KN6PE87"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FG0KN6PE87');
+          `}
+      </Script>
       <body>
         {children}
         <Footer />
