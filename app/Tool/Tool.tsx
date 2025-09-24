@@ -85,10 +85,9 @@ const About = () => {
       <main className={styles.main}>
         <div className={styles.followButtonContainer}>
           <a
-            href="https://x.com/johnvs_nagendra"
+            href="https://twitter.com/johnvs_nagendra"
             className="twitter-follow-button"
             data-size="large"
-            data-show-count="false"
             onClick={() => trackEvent("click", "social", "follow_on_x", 1)}
           >
             Follow @johnvs_nagendra
