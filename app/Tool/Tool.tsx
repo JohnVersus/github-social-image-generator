@@ -41,13 +41,15 @@ const About = () => {
     const script = document.createElement("script");
     script.src = "https://platform.twitter.com/widgets.js";
     script.async = true;
-    script.onload = () => {
-      setIsTwitterScriptLoaded(true);
-    };
     document.body.appendChild(script);
+
+    const timer = setTimeout(() => {
+      setIsTwitterScriptLoaded(true);
+    }, 5000);
 
     return () => {
       document.body.removeChild(script);
+      clearTimeout(timer);
     };
   }, []);
 
