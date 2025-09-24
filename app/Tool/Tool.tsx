@@ -4,6 +4,12 @@ import styles from "./Tool.module.css";
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
+declare global {
+  interface Window {
+    gtag: any;
+  }
+}
+
 const About = () => {
   const [repoUrl, setRepoUrl] = useState("");
   const [queryUrl, setQueryUrl] = useState("");
@@ -42,7 +48,12 @@ const About = () => {
   }, []);
 
   // 2. Create a function to handle the copy action
-  const trackEvent = (action, category, label, value) => {
+  const trackEvent = (
+    action: string,
+    category: string,
+    label: string,
+    value: number
+  ) => {
     if (window.gtag) {
       window.gtag("event", action, {
         event_category: category,
