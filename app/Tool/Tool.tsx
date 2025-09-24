@@ -15,6 +15,7 @@ const About = () => {
   const [queryUrl, setQueryUrl] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [copyStatus, setCopyStatus] = useState("");
+  const [isTwitterScriptLoaded, setIsTwitterScriptLoaded] = useState(false);
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -40,6 +41,9 @@ const About = () => {
     const script = document.createElement("script");
     script.src = "https://platform.twitter.com/widgets.js";
     script.async = true;
+    script.onload = () => {
+      setIsTwitterScriptLoaded(true);
+    };
     document.body.appendChild(script);
 
     return () => {
@@ -83,7 +87,10 @@ const About = () => {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <div className={styles.followButtonContainer}>
+        <div
+          className={styles.followButtonContainer}
+          style={{ visibility: isTwitterScriptLoaded ? "visible" : "hidden" }}
+        >
           <a
             href="https://twitter.com/johnvs_nagendra"
             className="twitter-follow-button"

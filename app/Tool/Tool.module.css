@@ -113,7 +113,7 @@
 
 .followButtonContainer {
   position: absolute;
-  bottom: 1rem;
+  bottom: 6vh;
   right: 1rem;
   z-index: 10;
 }
