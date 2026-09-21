@@ -13,7 +13,6 @@ export const requestCheck = (
     (userAgent as string)?.includes("Safari") ||
     (userAgent as string)?.includes("AppleWebKit") ||
     (userAgent as string)?.includes("Chrome");
-  console.log({ userAgent: safety });
   if (safety) {
     // Request is from a browser
     next();

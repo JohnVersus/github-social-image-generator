@@ -7,7 +7,6 @@ export const refererCheck = (
   next: Function
 ) => {
   const referer = req.headers.referer;
-  console.log({ referer });
 
   if (!referer) {
     return res.status(403).json({ error: "Forbidden" });
